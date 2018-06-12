@@ -1,0 +1,52 @@
+"""
+Week 1 - Video 1 - Strings
+"""
+
+# you can use double OR single quotes to make a string
+
+first_name = "Timothy"
+last_name = 'Eason'
+
+print('%s %s' % (first_name, last_name))
+
+# quotes can also span multiple lines using triple quotes
+
+address = """919 Northumberland Dr.
+Niskayuna, NY 12309
+"""
+# note: by placing the quotes below the text we are creating a new, empty line
+# if you don't believe me, check what happens when you put the quotes directly
+# at the end of the quote ;)
+
+print(address)
+
+# you can also add strings together (C-O-N-C-A-T-I-N-A-T-I-O-N)
+name_and_address = first_name + ' ' + last_name + '\n' + address
+print(name_and_address)
+
+# playing around with tabs (\t) and new lines (\n)
+print('abc\n\tdef\n\t\tghi\n\t\t\tjkl\n\t\t\t\tmno\n\t\t\t\t\tpqr'
+      '\n\t\t\t\t\t\tstu\n\t\t\t\t\t\t\tvwx\n\t\t\t\t\t\t\t\ty&z')
+
+print('')
+
+# we can also multiplie strings like so...
+first_last_five = (first_name + ' ' + last_name + ' ') * 5
+print(first_last_five)
+pupsik = 'P U P S I K '
+print(pupsik * 10)
+
+print('')
+
+# you can also turn almost anything into a string
+num = 9.87
+sting_num = str(num)
+print(sting_num)
+
+print('')
+# now that your number is a string, you can add it to other strings
+print('number: %s' % sting_num)
+
+# however, you can't add your string number to other numbers
+# the following code will bring up an error if you try to run it:
+# print(sting_num + 8.2)
