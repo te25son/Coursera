@@ -80,3 +80,12 @@ def count_odd_numbers(numlist):
 print(count_odd_numbers(numbers))
 print(count_odd_numbers(range(0, 100, 3)))
 print(list(range(0, 100, 3)))
+
+numbers = [4, 6, -2, 10, 7, 3]
+sumsq = 0
+
+for num in numbers:
+    square = num * num
+    sumsq += square
+    
+print(sumsq)
