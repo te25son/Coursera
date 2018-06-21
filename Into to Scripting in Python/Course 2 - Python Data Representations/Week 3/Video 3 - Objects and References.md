@@ -1,18 +1,25 @@
 OBJECTS & REFERENCES
 --------------------
 
-Think of a reference as a name tag. You can put it on to name an object. You can also take it off and put it 
-back on again. Or, if you're feeling especially crazy, you can take your name tag off of one object and put it onto 
-another object. Whoa!
+Think of a reference as a name tag. You put a name tag onto an object so you have something to reference that object as. You can also take the name tag off and put it back on again. Or, if you're feeling especially crazy, you can take your name tag off of one object and put it onto another object. Whoa!
 
 Furthermore, you can put multiple name tags onto one object. For example:
 
 ![screenshot 1](https://user-images.githubusercontent.com/39095798/41703520-e0f8e594-7533-11e8-8280-b2be36d8c220.png)
 
-In the above example my_list refers to the list object [1, 2, 3]. In other words, we've placed a name tag on our list
-to introduce it as "my_list". When we call my_list, we are realling calling list [1, 2, 3].
+In the above example my_list refers to the list object [1, 2, 3]. In other words, we've placed a name tag on our list to introduce it as "my_list". When we call my_list, we are really calling the list [1, 2, 3].
 
-On the second line we declare my_other_list = my_list. By saying this we are telling Python we want my_other_list to refer
-to the object referred to by my_list.
+On the second line we declare my_other_list = my_list. By saying this we are telling Python we want my_other_list to refer to the object referred to by my_list. Here's another image to clear up any confusion:
 
 ![screenshot2](https://user-images.githubusercontent.com/39095798/41706284-b5893df2-753b-11e8-895e-3f227f80ec4c.PNG)
+
+You can see here that both names refer to the same object. Therefore, we can logically conclude that whatever happens to one of the names will happen to the other. To check this, look at the next example:
+
+![screen shot 2018-06-21 at 1 30 30 pm](https://user-images.githubusercontent.com/39095798/41718594-b03c6294-755d-11e8-97af-b3315555be09.png) 
+![screen shot 2018-06-21 at 1 31 01 pm](https://user-images.githubusercontent.com/39095798/41718638-ccab6d44-755d-11e8-816f-f33a4ebe16ea.png)
+
+Here we've used the append method to add a fourth item into our list. I called the method on my_list, but because my_list and my_other_list both refer to the same list, both lists now have four elements. 
+
+But what happens if I call a method on my_other_list?
+
+As we can see, calling a method on my_other_list also changes my_list. 
