@@ -42,4 +42,4 @@ The answer is: no, Bruce Wayne does not disappear just because Batman now refers
 
 ### TLDR:
 
-Objects can have as many names as you can give it. Whatever you do to one name will happen to every other name sharing the same object. 
+An object can have as many names as you can give it. Whatever you do to one name will happen to every other name sharing the same object. 
