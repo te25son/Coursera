@@ -22,4 +22,7 @@ Here we've used the append method to add a fourth item into our list. I called t
 
 But what happens if I call a method on my_other_list?
 
+![screen shot 2018-06-21 at 2 21 53 pm](https://user-images.githubusercontent.com/39095798/41718853-86f828d6-755e-11e8-8cfb-418b65f94a01.png) 
+![screen shot 2018-06-21 at 2 22 16 pm](https://user-images.githubusercontent.com/39095798/41718873-95e5643a-755e-11e8-943a-0bf2838289cd.png)
+
 As we can see, calling a method on my_other_list also changes my_list. 
