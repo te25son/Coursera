@@ -14,3 +14,5 @@ to introduce it as "my_list". When we call my_list, we are realling calling list
 
 On the second line we declare my_other_list = my_list. By saying this we are telling Python we want my_other_list to refer
 to the object referred to by my_list.
+
+![screenshot2](https://user-images.githubusercontent.com/39095798/41706284-b5893df2-753b-11e8-895e-3f227f80ec4c.PNG)
