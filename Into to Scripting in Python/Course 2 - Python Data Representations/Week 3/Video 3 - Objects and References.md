@@ -8,3 +8,9 @@ another object. Whoa!
 Furthermore, you can put multiple name tags onto one object. For example:
 
 ![screenshot 1](https://user-images.githubusercontent.com/39095798/41703520-e0f8e594-7533-11e8-8280-b2be36d8c220.png)
+
+In the above example my_list refers to the list object [1, 2, 3]. In other words, we've placed a name tag on our list
+to introduce it as "my_list". When we call my_list, we are realling calling list [1, 2, 3].
+
+On the second line we declare my_other_list = my_list. By saying this we are telling Python we want my_other_list to refer
+to the object referred to by my_list.
