@@ -20,9 +20,26 @@ You can see here that both names refer to the same object. Therefore, we can log
 
 Here we've used the append method to add a fourth item into our list. I called the method on my_list, but because my_list and my_other_list both refer to the same list, both lists now have four elements. 
 
-But what happens if I call a method on my_other_list?
+Another way to look at this is to think of the object as a person with multiple names or aliases. For example, let's try to imaging a person who has two names, Bruce Wayne and Batman. Both of these names refer to the same person, and so whatever happens to Batman also happens to Bruce Wayne and vice versa. 
+
+To really clarify this, let's try calling another method, but on my_other_list this time.
 
 ![screen shot 2018-06-21 at 2 21 53 pm](https://user-images.githubusercontent.com/39095798/41718853-86f828d6-755e-11e8-8cfb-418b65f94a01.png) 
 ![screen shot 2018-06-21 at 2 22 16 pm](https://user-images.githubusercontent.com/39095798/41718873-95e5643a-755e-11e8-943a-0bf2838289cd.png)
 
-As we can see, calling a method on my_other_list also changes my_list. 
+As we can see, calling a method on my_other_list also changes my_list. Surprise-surprise!
+
+I mentioned earlier that name tags can also be taken off and put onto other objects. To continue the Batman / Bruce Wayne analogy, let's say Batman gets tired of beating up baddies, so decides to retire and pass the role of Batman on to a successor. The alias Batman is still there, but now it refers to a new person. What do you think will happen? Will Bruce Wayne also disappear because he is no longer Batman?
+
+Let's experiment with this idea by assigning the name my_list to a new list.
+
+![screenshot](https://user-images.githubusercontent.com/39095798/41725080-474a2002-756f-11e8-9aa6-98e0284d2d79.PNG) 
+
+![screen shot](https://user-images.githubusercontent.com/39095798/41725104-53cbf7a6-756f-11e8-9aaa-2ba41528ca8a.PNG)
+
+The answer is: no, Bruce Wayne does not disappear just because Batman now refers to another person. The person who was Bruce Wayne <i>and</i> Batman still exists, but now with just one alias instead of two. 
+
+
+### TLDR:
+
+Objects can have as many names as you can give it. Whatever you do to one name will happen to every other name sharing the same object. 
