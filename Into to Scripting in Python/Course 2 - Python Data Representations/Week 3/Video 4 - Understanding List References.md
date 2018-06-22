@@ -31,5 +31,5 @@ Here we can see, like our first example, we've created an exact replica of our l
 
 ![capture4](https://user-images.githubusercontent.com/39095798/41774873-c54bbcba-7621-11e8-9a10-765a208f2109.PNG)
 
-And we're right! By calling the pop method on my_list2, my_list1 was left unaffected. 
+And we're right! By calling the pop method on my_list2, my_list1 was left unaffected. The reason for this is that the object list does not contain objects themselves, rather it contains further references to those objects. So a list is an object that contains reference indexes to other objects. This is the reason, when we want to change an object in a list, we call its index number.
 
