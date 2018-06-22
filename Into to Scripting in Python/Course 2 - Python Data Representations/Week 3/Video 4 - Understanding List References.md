@@ -18,3 +18,18 @@ Here we can see that by stating mylist1 = mylist2, we are telling Python to make
 Remember, aliases are just different names for the same object like Batman and Bruce Wayne are aliases for the same person. If Batman breaks his back, Bruce Wayne will also have a broken back. 
 
 Now what about making a copy of a list?
+
+There are multiple ways to copy a list, but for this example we'll use the list function. 
+
+![capture1](https://user-images.githubusercontent.com/39095798/41774627-e11266fc-7620-11e8-85d7-b6dd12792554.PNG)
+
+![capture2](https://user-images.githubusercontent.com/39095798/41774638-ec1ca120-7620-11e8-8d54-640cf031602b.PNG)
+
+Here we can see, like our first example, we've created an exact replica of our list. We also see that both my_list1 and my_list2 refer to unique lists, so we can assume that changes made to one list will not affect the other. Let's double-check this...
+
+![capture3](https://user-images.githubusercontent.com/39095798/41774860-bdee7ce6-7621-11e8-9519-41a23acb719a.PNG)
+
+![capture4](https://user-images.githubusercontent.com/39095798/41774873-c54bbcba-7621-11e8-9a10-765a208f2109.PNG)
+
+And we're right! By calling the pop method on my_list2, my_list1 was left unaffected. 
+
