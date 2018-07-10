@@ -62,13 +62,52 @@ def singleline_diff_format(line1, line2, idx):
             + line2)
 
 
+def multiline_diff(lines1, lines2):
+    """
+    Inputs:
+      lines1 - list of single line strings
+      lines2 - list of single line strings
+    Output:
+      Returns a tuple containing the line number (starting from 0) and
+      the index in that line where the first difference between lines1
+      and lines2 occurs.
+      
+      Returns (IDENTICAL, IDENTICAL) if the two lists are the same.
+    """
+    fin_list = []
+    min_list = min(len(lines1), len(lines2))
+    for item in range(min_list):
+        if lines1[item] != lines2[item]:
+            fin_list.append(item)
+            fin_list.append(singleline_diff(lines1[item], lines2[item]))        
+            return tuple(fin_list)
+    
+    if min_list == len(lines1) and min_list == len(lines2):
+        fin_list.append('IDENTICAL')
+        fin_list.append(singleline_diff(lines1[item], lines2[item]))
+        return tuple(fin_list)
+    
+    fin_list.append(min_list)
+    fin_list.append(0)
+    return tuple(fin_list)
 
 
 thingy = "this is a line with a \n in it \n haha!"
 other_thingy = "this is a line without a \\n in it \\n haha "
 
-stringy = 'abcdefghijklmnop'
+stringy = 'bcdefghijklmnop'
 stringy2 = 'abcdefghijklmnop'
 
 print(singleline_diff_format(thingy, other_thingy, 55))
 print(singleline_diff_format(stringy, stringy2, singleline_diff(stringy, stringy2)))
+
+tuptup = tuple('a' + 'a')
+print(tuptup)
+
+listy = ["abc", "def", "ghi", "jkl"]
+listy2 = ["abcc", "deef", "ghi"]
+
+print(multiline_diff(listy, listy2))
+
+thinga = singleline_diff(stringy, stringy2)
+print(thinga)
