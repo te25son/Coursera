@@ -114,3 +114,21 @@ def get_file_lines(filename):
     the_file.close()
 
     return the_list
+
+
+def file_diff_format(filename1, filename2):
+    """
+    Inputs:
+      filename1 - name of first file
+      filename2 - name of second file
+    Output:
+      Returns a four line string showing the location of the first
+      difference between the two files named by the inputs.
+
+      If the files are identical, the function instead returns the
+      string "No differences\n".
+
+      If either file does not exist or is not readable, then the
+      behavior of this function is undefined.
+    """
+    pass
