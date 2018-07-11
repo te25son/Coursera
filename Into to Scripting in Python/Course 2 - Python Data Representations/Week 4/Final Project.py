@@ -131,4 +131,17 @@ def file_diff_format(filename1, filename2):
       If either file does not exist or is not readable, then the
       behavior of this function is undefined.
     """
-    pass
+    file_list1 = get_file_lines(filename1)  # makes a list of lines from filename1
+    file_list2 = get_file_lines(filename2)	# makes a list of lines from filename2
+    
+    if file_list1 == file_list2:  # checks if the lines in each list are the same
+        return 'No differences\n'
+    
+    first_diff = multiline_diff(file_list1, file_list2)  # creates a tuple containing the first line difference
+    formated_diff = singleline_diff_format(file_list1[first_diff[0]],
+                                            file_list2[first_diff[0]],
+                                            first_diff[1])  # creates a formated, multi-line string displaying the location of the mismatch
+    
+    return ('Line %s:' % str(first_diff[0])
+            + '\n'
+            + formated_diff)
