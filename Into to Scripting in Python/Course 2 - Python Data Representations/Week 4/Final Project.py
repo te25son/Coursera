@@ -2,6 +2,7 @@
 Final Project for Course 2
 """
 
+IDENTICAL = -1
 
 def singleline_diff(line1, line2):
     """
@@ -20,7 +21,7 @@ def singleline_diff(line1, line2):
             return item
 
     if min_strlen == len(line1) and min_strlen == len(line2):
-        return 'IDENTICAL'
+        return IDENTICAL
 
     return min_strlen
 
@@ -43,7 +44,7 @@ def singleline_diff_format(line1, line2, idx):
     if ('\n' or '\r') in (line1 or line2):
         return ''
 
-    if singleline_diff(line1, line2) != 'IDENTICAL':
+    if singleline_diff(line1, line2) != IDENTICAL:
         if (idx < 0) or (idx > max(len(line1), len(line2))):
             return ''
 
@@ -53,13 +54,15 @@ def singleline_diff_format(line1, line2, idx):
                 + '=' * (diff_num)
                 + '^'
                 + '\n'
-                + line2)
+                + line2
+                + '\n')
 
     return (line1
             + '\n'
-            + 'IDENTICAL'
+            + IDENTICAL
             + '\n'
-            + line2)
+            + line2
+            + '\n')
 
 
 def multiline_diff(lines1, lines2):
@@ -83,7 +86,7 @@ def multiline_diff(lines1, lines2):
             return tuple(fin_list)
     
     if min_list == len(lines1) and min_list == len(lines2):
-        fin_list.append('IDENTICAL')
+        fin_list.append(IDENTICAL)
         fin_list.append(singleline_diff(lines1[item], lines2[item]))
         return tuple(fin_list)
     
@@ -109,7 +112,8 @@ def get_file_lines(filename):
     for line in the_file:
         if '\n' in line:
             the_list.append(line[:-1])
-    the_list.append(line)
+        else:
+            the_list.append(line)
 
     the_file.close()
 
@@ -131,16 +135,16 @@ def file_diff_format(filename1, filename2):
       If either file does not exist or is not readable, then the
       behavior of this function is undefined.
     """
-    file_list1 = get_file_lines(filename1)  # makes a list of lines from filename1
-    file_list2 = get_file_lines(filename2)	# makes a list of lines from filename2
+    file_list1 = get_file_lines(filename1)
+    file_list2 = get_file_lines(filename2)
     
-    if file_list1 == file_list2:  # checks if the lines in each list are the same
+    if file_list1 == file_list2:
         return 'No differences\n'
     
-    first_diff = multiline_diff(file_list1, file_list2)  # creates a tuple containing the first line difference
+    first_diff = multiline_diff(file_list1, file_list2)
     formated_diff = singleline_diff_format(file_list1[first_diff[0]],
                                             file_list2[first_diff[0]],
-                                            first_diff[1])  # creates a formated, multi-line string displaying the location of the mismatch
+                                            first_diff[1])
     
     return ('Line %s:' % str(first_diff[0])
             + '\n'
