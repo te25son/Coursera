@@ -92,22 +92,25 @@ def multiline_diff(lines1, lines2):
     return tuple(fin_list)
 
 
-thingy = "this is a line with a \n in it \n haha!"
-other_thingy = "this is a line without a \\n in it \\n haha "
+def get_file_lines(filename):
+    """
+    Inputs:
+      filename - name of file to read
+    Output:
+      Returns a list of lines from the file named filename.  Each
+      line will be a single line string with no newline ('\n') or
+      return ('\r') characters.
 
-stringy = 'bcdefghijklmnop'
-stringy2 = 'abcdefghijklmnop'
+      If the file does not exist or is not readable, then the
+      behavior of this function is undefined.
+    """
+    the_list = []
+    the_file = open(filename, "rt")
+    for line in the_file:
+        if '\n' in line:
+            the_list.append(line[:-1])
+    the_list.append(line)
 
-print(singleline_diff_format(thingy, other_thingy, 55))
-print(singleline_diff_format(stringy, stringy2, singleline_diff(stringy, stringy2)))
+    the_file.close()
 
-tuptup = tuple('a' + 'a')
-print(tuptup)
-
-listy = ["abc", "def", "ghi", "jkl"]
-listy2 = ["abcc", "deef", "ghi"]
-
-print(multiline_diff(listy, listy2))
-
-thinga = singleline_diff(stringy, stringy2)
-print(thinga)
+    return the_list
