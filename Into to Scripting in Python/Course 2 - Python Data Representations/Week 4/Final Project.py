@@ -87,7 +87,7 @@ def multiline_diff(lines1, lines2):
     
     if min_list == len(lines1) and min_list == len(lines2):
         fin_list.append(IDENTICAL)
-        fin_list.append(singleline_diff(lines1[item], lines2[item]))
+        fin_list.append(IDENTICAL)
         return tuple(fin_list)
     
     fin_list.append(min_list)
