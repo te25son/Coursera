@@ -142,6 +142,13 @@ def file_diff_format(filename1, filename2):
         return 'No differences\n'
     
     first_diff = multiline_diff(file_list1, file_list2)
+    
+    if IDENTICAL in first_diff:
+        first_diff = list(first_diff)
+        for item in first_diff:
+            if first_diff[item] == IDENTICAL:
+                first_diff[item] = 0
+                
     formated_diff = singleline_diff_format(file_list1[first_diff[0]],
                                             file_list2[first_diff[0]],
                                             first_diff[1])
