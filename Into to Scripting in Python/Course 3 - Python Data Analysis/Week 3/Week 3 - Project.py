@@ -4,6 +4,13 @@ Project for week 3
 
 import csv
 
+table1 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table1.csv'
+table2 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table2.csv'
+table3 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table3.csv'
+table4 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table4.csv'
+table5 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table5.csv'
+table6 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table6.csv'
+table7 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table7.csv'
 
 def read_csv_fieldnames(filename, separator, quote):
     """
@@ -18,7 +25,6 @@ def read_csv_fieldnames(filename, separator, quote):
     with open(filename, newline='') as csv_file:
 
         csv_reader = csv.DictReader(csv_file,
-                                    skipinitialspace=True,
                                     delimiter=separator,
                                     quotechar=quote)
 
@@ -43,7 +49,6 @@ def read_csv_as_list_dict(filename, separator, quote):
     with open(filename, newline='') as csv_file:
 
         csv_reader = csv.DictReader(csv_file,
-                                    skipinitialspace=True,
                                     delimiter=separator,
                                     quotechar=quote)
 
@@ -71,7 +76,6 @@ def read_csv_as_nested_dict(filename, keyfield, separator, quote):
     with open(filename, 'rt', newline='') as csv_file:
 
         csv_reader = csv.DictReader(csv_file,
-                                    skipinitialspace=True,
                                     delimiter=separator,
                                     quotechar=quote)
 
@@ -97,10 +101,11 @@ def write_csv_from_list_dict(filename, table, fieldnames, separator, quote):
     with open(filename, 'w', newline='') as csv_file:
 
         csv_writer = csv.DictWriter(csv_file,
-                                    skipinitialspace=True,
                                     fieldnames=fieldnames,
                                     delimiter=separator,
                                     quotechar=quote)
 
         for row in table:
             csv_writer.writerow(row)
+
+print(read_csv_as_list_dict(table4, ',', '"'))
