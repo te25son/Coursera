@@ -4,14 +4,6 @@ Project for week 3
 
 import csv
 
-table1 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table1.csv'
-table2 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table2.csv'
-table3 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table3.csv'
-table4 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table4.csv'
-table5 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table5.csv'
-table6 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table6.csv'
-table7 = '/Users/timothyeason/Desktop/test_files/Week 3 Project Files/table7.csv'
-
 def read_csv_fieldnames(filename, separator, quote):
     """
     Inputs:
@@ -98,14 +90,20 @@ def write_csv_from_list_dict(filename, table, fieldnames, separator, quote):
       given fieldnames.  The CSV file should use the given separator and
       quote characters.  All non-numeric fields will be quoted.
     """
+    table1 = []
+    for item in table:
+        table2 = []
+        for fieldname in fieldnames:
+            table2.append(item[fieldname])
+        table1.append(table2)
+
     with open(filename, 'w', newline='') as csv_file:
 
-        csv_writer = csv.DictWriter(csv_file,
-                                    fieldnames=fieldnames,
-                                    delimiter=separator,
-                                    quotechar=quote)
+        csv_writer = csv.writer(csv_file,
+                           delimiter=separator,
+                           quotechar=quote,
+                           quoting=csv.QUOTE_NONNUMERIC)
 
-        for row in table:
+        csv_writer.writerow(fieldnames)
+        for row in table1:
             csv_writer.writerow(row)
-
-print(read_csv_as_list_dict(table4, ',', '"'))
