@@ -4,7 +4,6 @@ Project for week 3
 
 import csv
 
-
 def read_csv_fieldnames(filename, separator, quote):
     """
     Inputs:
@@ -18,7 +17,6 @@ def read_csv_fieldnames(filename, separator, quote):
     with open(filename, newline='') as csv_file:
 
         csv_reader = csv.DictReader(csv_file,
-                                    skipinitialspace=True,
                                     delimiter=separator,
                                     quotechar=quote)
 
@@ -43,7 +41,6 @@ def read_csv_as_list_dict(filename, separator, quote):
     with open(filename, newline='') as csv_file:
 
         csv_reader = csv.DictReader(csv_file,
-                                    skipinitialspace=True,
                                     delimiter=separator,
                                     quotechar=quote)
 
@@ -71,7 +68,6 @@ def read_csv_as_nested_dict(filename, keyfield, separator, quote):
     with open(filename, 'rt', newline='') as csv_file:
 
         csv_reader = csv.DictReader(csv_file,
-                                    skipinitialspace=True,
                                     delimiter=separator,
                                     quotechar=quote)
 
@@ -94,13 +90,20 @@ def write_csv_from_list_dict(filename, table, fieldnames, separator, quote):
       given fieldnames.  The CSV file should use the given separator and
       quote characters.  All non-numeric fields will be quoted.
     """
+    table1 = []
+    for item in table:
+        table2 = []
+        for fieldname in fieldnames:
+            table2.append(item[fieldname])
+        table1.append(table2)
+
     with open(filename, 'w', newline='') as csv_file:
 
-        csv_writer = csv.DictWriter(csv_file,
-                                    skipinitialspace=True,
-                                    fieldnames=fieldnames,
-                                    delimiter=separator,
-                                    quotechar=quote)
+        csv_writer = csv.writer(csv_file,
+                           delimiter=separator,
+                           quotechar=quote,
+                           quoting=csv.QUOTE_NONNUMERIC)
 
-        for row in table:
+        csv_writer.writerow(fieldnames)
+        for row in table1:
             csv_writer.writerow(row)
