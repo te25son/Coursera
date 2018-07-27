@@ -20,7 +20,7 @@ def read_csv_fieldnames(filename, separator, quote):
         csv_reader = csv.DictReader(csv_file,
                                     skipinitialspace=True,
                                     delimiter=separator,
-                                    quoting=quote)
+                                    quotechar=quote)
 
         table = csv_reader.fieldnames
 
@@ -45,7 +45,7 @@ def read_csv_as_list_dict(filename, separator, quote):
         csv_reader = csv.DictReader(csv_file,
                                     skipinitialspace=True,
                                     delimiter=separator,
-                                    quoting=quote)
+                                    quotechar=quote)
 
         for row in csv_reader:
             table.append(row)
@@ -73,7 +73,7 @@ def read_csv_as_nested_dict(filename, keyfield, separator, quote):
         csv_reader = csv.DictReader(csv_file,
                                     skipinitialspace=True,
                                     delimiter=separator,
-                                    quoting=quote)
+                                    quotechar=quote)
 
         for row in csv_reader:
             table[row[keyfield]] = row
@@ -100,7 +100,7 @@ def write_csv_from_list_dict(filename, table, fieldnames, separator, quote):
                                     skipinitialspace=True,
                                     fieldnames=fieldnames,
                                     delimiter=separator,
-                                    quoting=quote)
+                                    quotechar=quote)
 
         for row in table:
             csv_writer.writerow(row)
