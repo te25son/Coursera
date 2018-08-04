@@ -11,6 +11,7 @@ Week 4 - Video 4 - Refactoring
 MERCURY_KELVIN = 440
 VENUS_KELVIN = 737
 MARS_KELVIN = 210
+EARTH_KELVIN = 288
 
 
 def kelvin_to_celsius(temp):
@@ -50,3 +51,8 @@ mars_fahren = kelvin_to_fahrenheit(MARS_KELVIN)
 mars_cels = kelvin_to_celsius(MARS_KELVIN)
 print(display_text('Mercury', mars_cels, 'Celcius'))
 print(display_text('Mercury', mars_fahren, 'Fahrenheit'))
+print('')
+earth_fahren = kelvin_to_fahrenheit(EARTH_KELVIN)
+earth_cels = kelvin_to_celsius(EARTH_KELVIN)
+print(display_text('Earth', earth_cels, 'Celsius'))
+print(display_text('Earth', earth_fahren, 'Fahrenheit'))
