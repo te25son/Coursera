@@ -6,7 +6,7 @@ import pygal
 import random
 
 
-def make_bar_graph(type='bar', title, xvals, data1, data2=None, data3=None, data4=None):
+def make_bar_graph(title, xvals, data1, data2=None, data3=None, data4=None, type='bar'):
     """
     Input:
         type: string (either bar (default) or stacked)
@@ -51,3 +51,4 @@ my_other_data = ['more data', [
 ]]
 
 make_bar_graph('my first bar graph', x_values, my_data, my_other_data)
+make_bar_graph('my first bar graph', x_values, my_data, my_other_data, type='stacked')
