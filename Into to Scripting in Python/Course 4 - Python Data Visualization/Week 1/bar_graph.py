@@ -6,13 +6,14 @@ import pygal
 import random
 
 
-def make_bar_graph(title, xvals, data1, data2=None):
+def make_bar_graph(title, xvals, data1, data2=None, data3=None, data4=None):
     """
     Input:
         title: string
         xvals: iterable
         data1: list where first element is string type and second element is list type
         data2: same as data1
+        ...
     
     Return:
         returns a bar graph to the browser
