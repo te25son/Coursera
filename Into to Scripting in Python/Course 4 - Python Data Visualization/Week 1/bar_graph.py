@@ -6,9 +6,10 @@ import pygal
 import random
 
 
-def make_bar_graph(title, xvals, data1, data2=None, data3=None, data4=None):
+def make_bar_graph(type='bar', title, xvals, data1, data2=None, data3=None, data4=None):
     """
     Input:
+        type: string (either bar (default) or stacked)
         title: string
         xvals: iterable
         data1: list where first element is string type and second element is list type
@@ -19,7 +20,11 @@ def make_bar_graph(title, xvals, data1, data2=None, data3=None, data4=None):
         returns a bar graph to the browser
     """
     # build the bar graph
-    bar_graph = pygal.Bar()
+    if type == 'stacked':
+        bar_graph = pygal.StackedBar()
+        
+    else:
+        bar_graph = pygal.Bar()
     
     # add the title
     bar_graph.title = title
