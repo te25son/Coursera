@@ -7,8 +7,6 @@ Creating Line Plots of GDP Data
 import csv
 import pygal
 
-CSV_FILE = 'isp_gdp.csv'
-
 
 def read_csv_as_list_dict(filename, separator, quote):
     """
@@ -79,7 +77,7 @@ def build_plot_dict(gdpinfo, country_list):
       CSV file should still be in the output dictionary, but
       with an empty XY plot value list.
     """
-    fin_dict = {}
+    master_dict = {}
 
     table = read_csv_as_list_dict(
         gdpinfo['gdpfile'],
@@ -90,20 +88,26 @@ def build_plot_dict(gdpinfo, country_list):
     year_range = range(gdpinfo['min_year'], gdpinfo['max_year'] + 1)
 
     for row in table:
-        fin_dict[row[gdpinfo['country_name']]] = {}
+        master_dict[row[gdpinfo['country_name']]] = {}
         for year in year_range:
-            fin_dict[row[gdpinfo['country_name']]][str(year)] = 0
+            master_dict[row[gdpinfo['country_name']]][str(year)] = 0
 
-    for key in fin_dict:
+    for key in master_dict:
         for row in table:
             if key == row[gdpinfo['country_name']]:
                 for year in year_range:
-                    fin_dict[key][str(year)] = row[str(year)]
+                    master_dict[key][str(year)] = row[str(year)]
 
-    for key in fin_dict:
-        fin_dict[key] = build_plot_values(gdpinfo, fin_dict[key])
+    for key in master_dict:
+        master_dict[key] = build_plot_values(gdpinfo, master_dict[key])
 
-    return fin_dict
+    specific_dict = {}
+
+    for key, value in master_dict.items():
+        if key in country_list:
+            specific_dict[key] = value
+
+    return specific_dict
 
 
 def render_xy_plot(gdpinfo, country_list, plot_file):
@@ -121,21 +125,44 @@ def render_xy_plot(gdpinfo, country_list, plot_file):
       specified by info for the countries in country_list.
       The image will be stored in a file named by plot_file.
     """
-    xy_chart = pygal.XY(title=u'Plot of GDP for select countries spanning 1960 to 2015',
+    xy_chart = pygal.XY(height=400,
+                        title=u'Plot of GDP for select countries spanning 1960 to 2015',
                         x_title='Year',
-                        y_title='GDP in USD')
+                        y_title='GDP in USD',
+                        show_dots=False)
 
-    pass
+    plot_dict = build_plot_dict(gdpinfo, country_list)
+
+    for key, value in plot_dict.items():
+        xy_chart.add(key, value)
+
+    xy_chart.render_to_file(plot_file)
+
+    # xy_chart.render_in_browser()
 
 
-gdpinfo = {
-        "gdpfile": "isp_gdp.csv",        # Name of the GDP CSV file
-        "separator": ",",                # Separator character in CSV file
-        "quote": '"',                    # Quote character in CSV file
-        "min_year": 1960,                # Oldest year of GDP data in CSV file
-        "max_year": 2015,                # Latest year of GDP data in CSV file
-        "country_name": "Country Name",  # Country name field name
-        "country_code": "Country Code"   # Country code field name
+def test_render_xy_plot():
+    """
+    Code to exercise render_xy_plot and generate plots from
+    actual GDP data.
+    """
+    gdpinfo = {
+        "gdpfile": "isp_gdp.csv",
+        "separator": ",",
+        "quote": '"',
+        "min_year": 1960,
+        "max_year": 2015,
+        "country_name": "Country Name",
+        "country_code": "Country Code"
     }
 
-the_table = read_csv_as_list_dict(CSV_FILE, gdpinfo['separator'], gdpinfo['quote'])
+    render_xy_plot(gdpinfo, [], "isp_gdp_xy_none.svg")
+    render_xy_plot(gdpinfo, ["China"], "isp_gdp_xy_china.svg")
+    render_xy_plot(gdpinfo, ["United Kingdom", "United States"],
+                   "isp_gdp_xy_uk+usa.svg")
+
+
+# Make sure the following call to test_render_xy_plot is commented out
+# when submitting to OwlTest/CourseraTest.
+
+# test_render_xy_plot()
