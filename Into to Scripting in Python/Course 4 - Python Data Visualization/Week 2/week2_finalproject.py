@@ -128,7 +128,7 @@ def render_xy_plot(gdpinfo, country_list, plot_file):
       The image will be stored in a file named by plot_file.
     """
     xy_chart = pygal.XY(height=400,
-                        title=u'Plot of GDP for select countries spanning 1960 to 2015',
+                        title=u'Plot of GDP for select countries spanning 1960 to 2017',
                         x_title='Year',
                         y_title='GDP in USD',
                         show_dots=False)
@@ -149,22 +149,22 @@ def test_render_xy_plot():
     actual GDP data.
     """
     gdpinfo = {
-        "gdpfile": "isp_gdp.csv",
+        "gdpfile": "modern_gdp_data.csv",
         "separator": ",",
         "quote": '"',
         "min_year": 1960,
-        "max_year": 2015,
+        "max_year": 2017,
         "country_name": "Country Name",
         "country_code": "Country Code"
     }
 
-    render_xy_plot(gdpinfo, [], "isp_gdp_xy_none.svg")
-    render_xy_plot(gdpinfo, ["China"], "isp_gdp_xy_china.svg")
-    render_xy_plot(gdpinfo, ["United Kingdom", "United States"],
+    # render_xy_plot(gdpinfo, [], "isp_gdp_xy_none.svg")
+    # render_xy_plot(gdpinfo, ["China"], "isp_gdp_xy_china.svg")
+    render_xy_plot(gdpinfo, ["United States", "European Union", "World"],
                    "isp_gdp_xy_uk+usa.svg")
 
 
 # Make sure the following call to test_render_xy_plot is commented out
 # when submitting to OwlTest/CourseraTest.
 
-# test_render_xy_plot()
+test_render_xy_plot()
