@@ -8,27 +8,29 @@ import csv
 import pygal
 
 
-def read_csv_as_list_dict(filename, separator, quote):
+def read_csv_as_nested_dict(filename, keyfield, separator, quote):
     """
     Inputs:
       filename  - name of CSV file
+      keyfield  - field to use as key for rows
       separator - character that separates fields
       quote     - character used to optionally quote fields
     Output:
-      Returns a list of dictionaries where each item in the list
-      corresponds to a row in the CSV file.  The dictionaries in the
-      list map the field names to the field values for that row.
+      Returns a dictionary of dictionaries where the outer dictionary
+      maps the value in the key_field to the corresponding row in the
+      CSV file.  The inner dictionaries map the field names to the
+      field values for that row.
     """
-    table = []
+    table = {}
 
-    with open(filename, newline='') as csv_file:
+    with open(filename, 'rt', newline='') as csv_file:
 
         csv_reader = csv.DictReader(csv_file,
                                     delimiter=separator,
                                     quotechar=quote)
 
         for row in csv_reader:
-            table.append(row)
+            table[row[keyfield]] = row
 
     return table
 
@@ -53,13 +55,17 @@ def build_plot_values(gdpinfo, gdpdata):
     year_range = range(gdpinfo['min_year'], gdpinfo['max_year'] + 1)
 
     for key, val in gdpdata.items():
-        if int(key) in year_range:
-            if val != '':
-                tup_list.append((int(key), float(val)))
-            else:
-                tup_list.append((int(key), None))
+        try:
+            if int(key) in year_range:
+                if val != '':
+                    tup_list.append((int(key), float(val)))
 
-    return tup_list
+        except ValueError:
+            return tup_list
+
+    sorted_tup_list = sorted(tup_list, key=lambda tup: tup[0])
+
+    return sorted_tup_list
 
 
 def build_plot_dict(gdpinfo, country_list):
@@ -79,35 +85,31 @@ def build_plot_dict(gdpinfo, country_list):
     """
     master_dict = {}
 
-    table = read_csv_as_list_dict(
+    table = read_csv_as_nested_dict(
         gdpinfo['gdpfile'],
+        gdpinfo['country_name'],
         gdpinfo['separator'],
         gdpinfo['quote']
     )
 
     year_range = range(gdpinfo['min_year'], gdpinfo['max_year'] + 1)
 
-    for row in table:
-        master_dict[row[gdpinfo['country_name']]] = {}
-        for year in year_range:
-            master_dict[row[gdpinfo['country_name']]][str(year)] = 0
-
-    for key in master_dict:
-        for row in table:
-            if key == row[gdpinfo['country_name']]:
-                for year in year_range:
-                    master_dict[key][str(year)] = row[str(year)]
-
-    for key in master_dict:
-        master_dict[key] = build_plot_values(gdpinfo, master_dict[key])
-
-    specific_dict = {}
-
-    for key, value in master_dict.items():
+    for key in table:
         if key in country_list:
-            specific_dict[key] = value
+            master_dict[key] = {}
+            for year in year_range:
+                master_dict[key][str(year)] = table[key][str(year)]
 
-    return specific_dict
+        else:
+            for country in country_list:
+                if country not in table.keys():
+                    master_dict[country] = []
+
+    for key in master_dict:
+        if master_dict[key] != []:
+            master_dict[key] = build_plot_values(gdpinfo, master_dict[key])
+
+    return master_dict
 
 
 def render_xy_plot(gdpinfo, country_list, plot_file):
@@ -136,9 +138,9 @@ def render_xy_plot(gdpinfo, country_list, plot_file):
     for key, value in plot_dict.items():
         xy_chart.add(key, value)
 
-    xy_chart.render_to_file(plot_file)
+    # xy_chart.render_to_file(plot_file)
 
-    # xy_chart.render_in_browser()
+    xy_chart.render_in_browser()
 
 
 def test_render_xy_plot():
