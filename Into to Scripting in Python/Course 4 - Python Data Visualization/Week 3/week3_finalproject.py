@@ -77,8 +77,7 @@ def build_map_dict_by_name(gdpinfo, plot_countries, year):
       have no GDP data for the specified year.
     """
     master_dict = {}
-    first_set = set()
-    second_set = set()
+    no_gdp_set = set()
 
     table = read_csv_as_nested_dict(
         gdpinfo['gdpfile'],
@@ -87,13 +86,48 @@ def build_map_dict_by_name(gdpinfo, plot_countries, year):
         gdpinfo['quote']
     )
 
+    country_codes = reconcile_countries_by_name(plot_countries, table)
 
-gdpinfo = {
-        "gdpfile": "isp_gdp.csv",
-        "separator": ",",
-        "quote": '"',
-        "min_year": 1960,
-        "max_year": 2015,
-        "country_name": "Country Name",
-        "country_code": "Country Code"
-    }
+    for key, value in country_codes[0].items():
+        if table[value][year] != '':
+            master_dict[key] = math.log(float(table[value][year]), 10)
+        else:
+            no_gdp_set.add(key)
+
+    return master_dict, country_codes[1], no_gdp_set
+
+
+# gdpinfo = {
+#         "gdpfile": "isp_gdp.csv",
+#         "separator": ",",
+#         "quote": '"',
+#         "min_year": 1960,
+#         "max_year": 2015,
+#         "country_name": "Country Name",
+#         "country_code": "Country Code"
+#     }
+#
+# name_table = read_csv_as_nested_dict(
+#         gdpinfo['gdpfile'],
+#         gdpinfo['country_name'],
+#         gdpinfo['separator'],
+#         gdpinfo['quote']
+# )
+# year = '1960'
+#
+# print(math.log(int(name_table['Aruba']['2010']), 10))
+#
+# test_dict = {}
+# test_set = set()
+# test_set2 = set()
+#
+# my_countries = {'ABW': 'Aruba', 'USA': 'United States', 'Boom': 'Boom'}
+# test_tup = reconcile_countries_by_name(my_countries, name_table)
+# print(test_tup)
+# for key, value in test_tup[0].items():
+#     if name_table[value][year] != '':
+#         test_dict[key] = math.log(float(name_table[value][year]), 10)
+#     else:
+#         test_set2.add(key)
+#
+# print(test_dict, test_tup[1], test_set2)
