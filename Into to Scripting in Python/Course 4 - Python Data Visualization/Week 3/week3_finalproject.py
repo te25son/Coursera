@@ -97,37 +97,68 @@ def build_map_dict_by_name(gdpinfo, plot_countries, year):
     return master_dict, country_codes[1], no_gdp_set
 
 
-# gdpinfo = {
-#         "gdpfile": "isp_gdp.csv",
-#         "separator": ",",
-#         "quote": '"',
-#         "min_year": 1960,
-#         "max_year": 2015,
-#         "country_name": "Country Name",
-#         "country_code": "Country Code"
-#     }
-#
-# name_table = read_csv_as_nested_dict(
-#         gdpinfo['gdpfile'],
-#         gdpinfo['country_name'],
-#         gdpinfo['separator'],
-#         gdpinfo['quote']
-# )
-# year = '1960'
-#
-# print(math.log(int(name_table['Aruba']['2010']), 10))
-#
-# test_dict = {}
-# test_set = set()
-# test_set2 = set()
-#
-# my_countries = {'ABW': 'Aruba', 'USA': 'United States', 'Boom': 'Boom'}
-# test_tup = reconcile_countries_by_name(my_countries, name_table)
-# print(test_tup)
-# for key, value in test_tup[0].items():
-#     if name_table[value][year] != '':
-#         test_dict[key] = math.log(float(name_table[value][year]), 10)
-#     else:
-#         test_set2.add(key)
-#
-# print(test_dict, test_tup[1], test_set2)
+def render_world_map(gdpinfo, plot_countries, year, map_file):
+    """
+    Inputs:
+      gdpinfo        - A GDP information dictionary
+      plot_countries - Dictionary whose keys are plot library country codes
+                       and values are the corresponding country name
+      year           - String year to create GDP mapping for
+      map_file       - Name of output file to create
+
+    Output:
+      Returns None.
+
+    Action:
+      Creates a world map plot of the GDP data for the given year and
+      writes it to a file named by map_file.
+    """
+    worldmap = pygal.maps.world.World()
+
+    worldmap.title = "GDP of World Countries in " + year
+
+    three_tups = build_map_dict_by_name(
+        gdpinfo, plot_countries, year
+    )
+
+    worldmap.add('GDP in ' + year, three_tups[0])
+    worldmap.add('No World Bank Data', three_tups[1])
+    worldmap.add('No GDP in ' + year, three_tups[2])
+
+    worldmap.render(map_file)
+
+
+def test_render_world_map():
+    """
+    Test the project code for several years.
+    """
+    gdpinfo = {
+        "gdpfile": "isp_gdp.csv",
+        "separator": ",",
+        "quote": '"',
+        "min_year": 1960,
+        "max_year": 2015,
+        "country_name": "Country Name",
+        "country_code": "Country Code"
+    }
+
+    # Get pygal country code map
+    pygal_countries = pygal.maps.world.COUNTRIES
+
+    # 1960
+    render_world_map(gdpinfo, pygal_countries, "1960", "isp_gdp_world_name_1960.svg")
+
+    # 1980
+    render_world_map(gdpinfo, pygal_countries, "1980", "isp_gdp_world_name_1980.svg")
+
+    # 2000
+    render_world_map(gdpinfo, pygal_countries, "2000", "isp_gdp_world_name_2000.svg")
+
+    # 2010
+    render_world_map(gdpinfo, pygal_countries, "2010", "isp_gdp_world_name_2010.svg")
+
+
+# Make sure the following call to test_render_world_map is commented
+# out when submitting to OwlTest/CourseraTest.
+
+# test_render_world_map()
