@@ -45,4 +45,42 @@ def build_country_code_converter(codeinfo):
       are world bank country codes, where the code fields in the
       code file are specified in codeinfo.
     """
+    master_dict = {}
+    
+    table = read_csv_as_nested_dict(
+        codeinfo['codefile'], 
+        codeinfo['plot_codes'], 
+        codeinfo['separator'], 
+        codeinfo['quote']
+    )
+    
+    for key in table:
+        master_dict[key] = table[key]['data_codes']
+        
+    return master_dict
+
+
+def reconcile_countries_by_code(codeinfo, plot_countries, gdp_countries):
+    """
+    Inputs:
+      codeinfo       - A country code information dictionary
+      plot_countries - Dictionary whose keys are plot library country codes
+                       and values are the corresponding country name
+      gdp_countries  - Dictionary whose keys are country codes used in GDP data
+
+    Output:
+      A tuple containing a dictionary and a set.  The dictionary maps
+      country codes from plot_countries to country codes from
+      gdp_countries.  The set contains the country codes from
+      plot_countries that did not have a country with a corresponding
+      code in gdp_countries.
+
+      Note that all codes should be compared in a case-insensitive
+      way.  However, the returned dictionary and set should include
+      the codes with the exact same case as they have in
+      plot_countries and gdp_countries.
+    """
+    master_dict = {}
+    master_set = set()
+    
     pass
