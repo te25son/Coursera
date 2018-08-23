@@ -55,7 +55,7 @@ def build_country_code_converter(codeinfo):
     )
     
     for key in table:
-        master_dict[key] = table[key]['data_codes']
+        master_dict[key] = table[key][codeinfo['data_codes']]
         
     return master_dict
 
@@ -83,4 +83,48 @@ def reconcile_countries_by_code(codeinfo, plot_countries, gdp_countries):
     master_dict = {}
     master_set = set()
     
+    code_dict = build_country_code_converter(codeinfo)
+
+    code_lower = {
+        key.lower(): value.lower() for key, value in code_dict.items()
+    }
+    gdp_lower = {
+        key.lower(): key for key in gdp_countries
+    }
+
+    for key in plot_countries:
+
+        if key.lower() in code_lower:
+            value = code_lower[key.lower()]
+
+            if value in gdp_lower:
+                value = gdp_lower[value]
+                master_dict[key] = value
+
+            else:
+                master_set.add(key)
+
+        else:
+            master_set.add(key)
+
+    return master_dict, master_set
+
+
+def build_map_dict_by_code(gdpinfo, codeinfo, plot_countries, year):
+    """
+    Inputs:
+      gdpinfo        - A GDP information dictionary
+      codeinfo       - A country code information dictionary
+      plot_countries - Dictionary mapping plot library country codes to country names
+      year           - String year for which to create GDP mapping
+
+    Output:
+      A tuple containing a dictionary and two sets.  The dictionary
+      maps country codes from plot_countries to the log (base 10) of
+      the GDP value for that country in the specified year.  The first
+      set contains the country codes from plot_countries that were not
+      found in the GDP data file.  The second set contains the country
+      codes from plot_countries that were found in the GDP data file, but
+      have no GDP data for the specified year.
+    """
     pass
