@@ -1,0 +1,93 @@
+// factorial example
+
+#include <stdio.h>
+
+int fact(int n)
+{
+  if (n == 1)
+    return 1;
+  else
+    return n * fact(n -1);
+}
+
+int main(void)
+{
+  printf("%i\n", fact(5));
+}
+
+
+Using the above code, what can we conclude will happen?
+
+To understand this we must understand stacking (hence the file's name: call stack).
+
+Call stacking runs the main program and stacks it on top:
+
+`main()`
+
+Main is a function, but main has another function inside it, printf().
+
+When main reaches printf(), main() is put on pause and printf() is moved to the top of the stack:
+
+`
+printf()
+main()
+`
+
+Printf() as it turns out has another function inside it, fact(). So guess what happens next...
+
+`
+fact(5)
+printf()
+main()
+`
+
+Yep, fact(5) is called to the top of the stack and is now the function that is running while all others are on hold, or pause.
+
+Because 5 is not equal to 1 in, fact is called again but this time as fact(4).
+
+And yes, you guessed it, the stack order has now changed.
+
+`
+fact(4)
+fact(5)
+printf()
+main()
+`
+
+Because fact(5) has returned anything yet (it's still waiting for a value to return), it too is put on pause.
+
+The stack grows like this until...
+
+`
+fact(1)
+fact(2)
+fact(3)
+fact(4)
+fact(5)
+printf()
+main()
+`
+
+Fact() returns a number. Due to the code that's written in fact(), a number won't be returned until n == 1.
+
+This then triggers a chain reaction that terminates and moves the stack back to it's origin, main()
+
+Here's a breakdown of the values that are returned:
+
+`
+fact(1) // return 1
+fact(2) // return 2 * 1 // 2
+fact(3) // return 3 * 2 // 6
+fact(4) // return 4 * 6 // 24
+fact(5) // return 5 * 24 // 120
+printf() // return 120
+main()
+`
+
+"Whoa whoa whoa!" you might be saying, "where did all those numbers come from?" Well, remember that when a function returns a number, that function is terminated and no longer sits at the top of the call stack.
+
+When fact(1) returns 1, it is returning that value to whatever function called it in the first place. Here, that function is fact(2), and 1 is returned where fact(2) first called it.
+
+Because n in fact(2) does not equal 1, it returns n * fact(n - 1). In the case of fact(2), fact(n - 1) is saying fact(2 - 1) which returns 1, so at the end of the day fact(2) returns 2 * fact(2 - 1), or 2 * 1.
+
+This process is repeated for fact(3), 4, 5 until we reach printf() and finally main().
