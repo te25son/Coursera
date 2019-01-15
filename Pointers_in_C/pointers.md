@@ -1,4 +1,4 @@
-#Pointers in C
+# Pointers in C
 
 Pointers are a pain in the ass to work with. Trust me, I learned about them 2 days ago.
 
