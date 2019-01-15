@@ -10,4 +10,4 @@ In a nutshell, the stack is where all your declared variables go. So, when you d
 
 Here's what our memory looks like after we pointer our pointer ;) at a with this snippit of code `int* ptr1 = &a`:
 
-![Image of the Memory so far](/images/stack0.png)
+![Image of the memory so far](https://github.com/te25son/Learning-Tools/blob/master/Pointers_in_C/images/stack0.PNG)
