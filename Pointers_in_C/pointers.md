@@ -25,4 +25,13 @@ Since we've established that pointers are just an address, let's look at the hea
 
 You may be asking well, wait if declared variables always live on the stack, then how can there be an undeclared variable? What would that even look like? Well, the heap is a magic place where memory can be allocated and freed at the programmers discrition. In this way, the programmer is a little like God. And if we remember that pointers are just an address, we can start to imagine how an address can direct us to something that's not quite in view yet.
 
-But before I go further, know that declared, non-pointer variables spend their short little lives on a single plane of existence, the stack. Pointers, on the other hand, are magical creatures that can move (or point) between the stack world and the heap world. 
+But before I go further, know that declared, non-pointer variables spend their short little lives on a single plane of existence, the stack. Pointers, on the other hand, are magical creatures that can move (or point) between the stack world and the heap world.
+
+For example, the following two lines of code are NOT equal:
+
+```c
+int b = malloc(sizeof(int));
+int* ptr2 = malloc(sizeof(int));
+```
+
+
