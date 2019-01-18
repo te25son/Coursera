@@ -1,4 +1,19 @@
-# Coursera
+### Online Resources
+
+[Freecodecamp](https://medium.freecodecamp.org/)
+
+[Python Tutor](http://pythontutor.com/)
+
+[Mozilla](https://developer.mozilla.org/en-US/)
+
+[Design Shack](https://designshack.net/)
+
+[W3 Schools](https://www.w3schools.com/)
+
+[Bootstrap](https://getbootstrap.com/) obviously
+
+[r/learnprogramming](https://www.reddit.com/r/learnprogramming/) because reddit is the greatest thing ever
+### Online Courses
 
 A link to my first Coursera course - Intro to Scripting in Python:
 
