@@ -1,10 +1,23 @@
 #3rd party modules
-# import tcod as libtcod
+import tcod as libtcod
 import pygame
 
 # game files
 import constants
 
+def draw_game():
+
+    global SURFACE_MAIN
+
+    # TODO clear the surface
+    SURFACE_MAIN.fill()
+
+    # TODO draw the map
+
+    # TODO draw the character
+
+    # update the display
+    pygame.display.flip()
 
 
 
@@ -45,7 +58,6 @@ def game_init():
 
     # global variable (set height and width (800, 600))
     SURFACE_MAIN = pygame.display.set_mode((constants.GAME_WIDTH, constants.GAME_HEIGHT))
-
 
 
 if __name__ == "main":
