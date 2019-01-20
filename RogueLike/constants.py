@@ -2,15 +2,15 @@ import pygame
 
 pygame.init()
 
+# Game sizes
+GAME_WIDTH = 800
+GAME_HEIGHT = 600
+
 #   ____      _
 #  / ___|___ | | ___  _ __ ___
 # | |   / _ \| |/ _ \| '__/ __|
 # | |__| (_) | | (_) | |  \__ \
 #  \____\___/|_|\___/|_|  |___/
-
-# Game sizes
-GAME_WIDTH = 800
-GAME_HEIGHT = 600
 
 # Color definitions
 COLOR_BLACK = (0, 0, 0)  # RGB for black
