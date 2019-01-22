@@ -1,0 +1,32 @@
+h1 {
+  font-family: 'Notable', sans-serif;
+  text-align: center;
+  font-size: 40px;
+}
+
+/* Not every font family will be supported on every OS */
+
+ p {
+   font-family: 'Wire One', sans-serif;
+   font-weight: bold;
+ }
+
+/* 1em = 16px (Default Font Size)
+2em = 32px */
+
+ body {
+   font-size: 20px;
+ }
+
+ /* By specifying the font size in the body
+ we change the default font size for the entire
+ file.
+ Therefore, 1em != 16.
+ Now, 1em = 20px (or the number you set) */
+
+#two {
+  font-size: 1.5em;
+  font-family: 'UnifontMedium';
+  font-weight: normal;
+  font-style: normal; 
+}

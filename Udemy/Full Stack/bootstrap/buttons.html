@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap Buttons</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+
+    <h1>Bootstrap!</h1>
+
+    <div class="container">
+
+      <h1>Buttons:</h1>
+
+      <p>Active buttons:</p>
+
+      <p>
+        <button class="btn btn-success btn-lg" type="button" name="button">Click</button>
+        <button class="btn btn-info" type="button" name="button">Click</button>
+        <button class="btn btn-warning btn-sm" type="button" name="button">Click</button>
+      </p>
+
+      <p>Disabled Buttons:</p>
+      <p>
+        <button class="btn btn-success btn-lg" type="button" name="button" disabled>Click</button>
+        <button class="btn btn-info" type="button" name="button" disabled>Click</button>
+        <button class="btn btn-warning btn-sm" type="button" name="button" disabled>Click</button>
+      </p>
+
+      <p>Checkbox and Radio Buttons:</p>
+
+      <p>
+        <div class="btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-secondary active">
+            <input type="checkbox" checked autocomplete="off"> Hello
+          </label>
+        </div>
+      </p>
+
+      <p>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-secondary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked> Active
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option2" autocomplete="off"> Not
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option3" autocomplete="off"> Not
+          </label>
+        </div>
+      </p>
+    </div>
+
+    <div class="container">
+
+      <div class="jumbotron">
+        <h1>This is a container</h1>
+        <p>This is some text within the container.</p>
+        <p>This is a button with a colored outline. You can click it if you want.</p>
+        <p>
+          <button class="btn btn-outline-primary" type="button" name="button">Learn more</button>
+        </p>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>

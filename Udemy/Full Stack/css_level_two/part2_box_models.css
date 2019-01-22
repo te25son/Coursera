@@ -1,0 +1,19 @@
+#top {
+  border: 4px solid blue;
+  /* adjust width of border using percentages */
+  width: 25%;
+  /* center the text inside the border, not the page */
+  text-align: center;
+  /* top, right , bottom, left */
+  /* margin: 30px 60px 90px 120px; */
+  margin: auto;
+}
+
+#bottom {
+  border: 4px solid red;
+  width: 50%;
+  padding: 200px;
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+}

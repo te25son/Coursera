@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Forms and Labels</title>
+  </head>
+  <body>
+
+    <form action="http://www.google.com" method="get">
+
+      <h1>Forms and Labels</h1>
+
+      <p>Enter Text and Go to Google:</p>
+      <input type="text" name="usertext" value="">
+      <input type="submit" name="" value="Submit">
+
+    </form>
+
+    <br>
+
+    <form>
+
+      <!-- using label the wrong way -->
+
+      <label>
+        Enter Text
+        <input type="text" name="" value="">
+      </label>
+      <label>
+        Enter Text
+        <input type="text" name="" value="">
+      </label>
+
+    </form>
+
+    <br>
+
+    <form>
+
+      <!-- using label the right way -->
+      <!-- i.e. with for -->
+
+      <label for="userinput">Enter Input:</label>
+
+      <input id="userinput" type="text" name="" value="Hello!">
+
+      <br>
+      <br>
+
+      <input id="userinput" type="text" name="" value="Hi!">
+
+    </form>
+
+    <br>
+
+    <form>
+
+      <!-- use placeholder instead of value -->
+
+      <input type="text" name="" placeholder="Enter text here">
+
+    </form>
+
+    <br>
+
+    <form>
+
+      <!-- require an input -->
+
+      <input type="email" name="" placeholder="email" required>
+      <input type="password" name="" placeholder="password" required>
+      <input type="submit" name="" value="Submit">
+
+    </form>
+
+  </body>
+</html>

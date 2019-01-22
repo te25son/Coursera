@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Form Selections</title>
+  </head>
+  <body>
+
+    <h1>Hotel Feedback Form</h1>
+
+    <form method="get">
+
+      <h3>Are you from inside the US, or outside the US?</h3>
+
+      <label for="inusa">I'm from the US:</label>
+
+      <!-- use name to make sure only one of the options is selected -->
+      <!-- by giving both inputs the same name only one may be selected -->
+
+      <input id="inusa" type="radio" name="loc" value="inside">
+
+      <br>
+
+      <label for="notusa">I'm NOT from the US:</label>
+
+      <input id="notusa" type="radio" name="loc" value="outside">
+
+      <h3>How was your service?</h3>
+
+      <!-- create a dropdown menu with select -->
+
+      <select name="stars">
+
+        <option value="amazing">5</option>
+        <option value="good">4</option>
+        <option value="okay">3</option>
+        <option value="bad">2</option>
+        <option value="terrible">1</option>
+
+      </select>
+
+      <h3>Any other feedback?</h3>
+
+      <textarea name="mytext" rows="8" cols="80"></textarea>
+
+      <input type="submit" name="" value="Submit">
+
+
+
+    </form>
+
+  </body>
+</html>

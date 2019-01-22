@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Connect Four - Welcome</title>
+
+    <!-- link to bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- link to my css -->
+    <!-- <link rel="stylesheet" href="connect_four_master.css"> -->
+
+  </head>
+  <body class="mt-5">
+
+    <div class="container">
+      <div class="row justify-content-center">
+
+        <h1 class="display-4 text-center">Welcome to Connect Four!</h1>
+
+        <div class="col-6 mt-5">
+
+          <p class="lead">To win Connect Four you must be the first player to get four of your colored checkers in a row either horizontally, vertically or diagonally.</p>
+          <p class="lead">Enter each player's name below, and click 'Start' to begin.</p>
+
+          <form class="mt-5" action="connect_four_project.html" method="get">
+            <div class="form-group">
+              <label for="bluePlayer">Blue Player</label>
+              <input type="text" class="form-control" id="bluePlayer" placeholder="Blue Player Name" required>
+            </div>
+            <div class="form-group">
+              <label for="redPlayer">Password</label>
+              <input type="text" class="form-control" id="redPlayer" placeholder="Red Player Name" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

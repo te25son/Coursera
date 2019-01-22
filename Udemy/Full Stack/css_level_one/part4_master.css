@@ -1,0 +1,12 @@
+li {
+  color: red;
+}
+
+/* class is higher in the general hierachy than regular elements */
+.topitems {
+  color: blue;
+}
+
+#two {
+  color: orange;
+}

@@ -1,0 +1,31 @@
+/* this is a comment */
+
+/* this is the basic format for a css tag */
+
+/* selected tag {
+  property: value;
+} */
+
+/* change color using a word */
+h1 {
+  color: blue;
+}
+
+
+/* change color with rgb */
+/* for rgb (red, green, blue) codes, google search color picker */
+li {
+  color: rgb(170, 64, 237);
+}
+
+/* use hex codes for color as well */
+p {
+  color: #5043cc;
+}
+
+/* use rgba (red, gree, blue, alpha) to change color */
+/* two numbers for alpha 1 and 2 */
+/* 1 = fully opaque; 2 = fully transparent */
+h4 {
+  color: rgba(170, 64, 237, 0.5);
+}

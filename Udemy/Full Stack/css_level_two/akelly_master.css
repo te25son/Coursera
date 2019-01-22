@@ -1,0 +1,34 @@
+h3 {
+  text-align: center;
+  font-family: 'Notable', sans-serif;
+}
+
+.art {
+  margin: auto;
+}
+
+td {
+  border: 5px solid white;
+  height: 200px;
+  width: 100px;
+}
+
+#one {
+  background-color: #809BCE;
+}
+
+#two {
+  background-color: #23F0C7;
+}
+
+#three {
+  background-color: #EF767A;
+}
+
+#four {
+  background-color: #1D3461;
+}
+
+#five {
+  background-color: #FFE347;
+}
