@@ -103,16 +103,21 @@ doubleChar('Hi-There') # 'HHii--TThheerree'
 # Again, you will have two functions for this problem!
 #
 # Examples:
-#
-# no_teen_sum(1, 2, 3) → 6
-# no_teen_sum(2, 13, 1) → 3
-# no_teen_sum(2, 1, 14) → 3
 
 def no_teen_sum(a, b, c):
-    pass
+    print(fix_teen(a) + fix_teen(b) + fix_teen(c))
 
 def fix_teen(n):
-    pass
+    teens = [13, 14, 17, 18, 19]
+    if n in teens:
+        return 0
+    else:
+        return n
+
+
+no_teen_sum(1, 2, 3) # 6
+no_teen_sum(2, 13, 1) # 3
+no_teen_sum(2, 1, 14) # 3
 
 #####################
 ## -- PROBLEM 6 -- ##
@@ -121,10 +126,16 @@ def fix_teen(n):
 # Return the number of even integers in the given array.
 #
 # Examples:
-#
-# count_evens([2, 1, 2, 3, 4]) → 3
-# count_evens([2, 2, 0]) → 3
-# count_evens([1, 3, 5]) → 0
 
 def count_evens(nums):
-    pass
+    count = 0
+    for num in nums:
+        if num % 2 == 0:
+            count += 1
+
+    print(count)
+
+
+count_evens([2, 1, 2, 3, 4]) # 3
+count_evens([2, 2, 0]) # 3
+count_evens([1, 3, 5]) # 0
