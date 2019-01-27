@@ -16,6 +16,31 @@ class struct_tile:
         self.block_path = block_path
 
 
+#   ___  _     _           _
+#  / _ \| |__ (_) ___  ___| |_ ___
+# | | | | '_ \| |/ _ \/ __| __/ __|
+# | |_| | |_) | |  __/ (__| |_\__ \
+#  \___/|_.__// |\___|\___|\__|___/
+#           |__/
+
+class obj_actor():
+    def __init__(self, x, y, sprite):
+        self.x = x # map address
+        self.y = y # map address
+        self.sprite = sprite
+
+    def draw(self):
+        # draw the character
+        # covert map location to pixel location
+        SURFACE_MAIN.blit(self.sprite, (self.x * constants.CELL_WIDTH, self.y * constants.CELL_HEIGHT))
+
+    def move(self, diff_x, diff_y):
+        if GAME_MAP[self.x + diff_x][self.y + diff_y].block_path == False:
+            self.x += diff_x
+            self.y += diff_y
+
+
+
 #  __  __
 # |  \/  | __ _ _ __
 # | |\/| |/ _` | '_ \
@@ -48,8 +73,8 @@ def draw_game():
     # draw the map
     draw_map(GAME_MAP)
 
-    # draw the character
-    SURFACE_MAIN.blit(constants.S_PLAYER, (200, 200))
+    #draw the character
+    PLAYER.draw()
 
     # update the display
     pygame.display.flip()
@@ -87,6 +112,16 @@ def game_main_loop():
             if event.type == pygame.QUIT:  # check if user closed window
                 game_quit = True
 
+            if event.type == pygame.KEYDOWN: # check if user presses a key
+                if event.key == pygame.K_UP:
+                    PLAYER.move(0, -1)
+                if event.key == pygame.K_DOWN:
+                    PLAYER.move(0, 1)
+                if event.key == pygame.K_RIGHT:
+                    PLAYER.move(1, 0)
+                if event.key == pygame.K_LEFT:
+                    PLAYER.move(-1, 0)
+
         # draw the game
         draw_game()
 
@@ -98,7 +133,7 @@ def game_init():
     """
     Initialize the main game
     """
-    global SURFACE_MAIN, GAME_MAP
+    global SURFACE_MAIN, GAME_MAP, PLAYER
 
     # initialize pygame
     pygame.init()
@@ -108,6 +143,8 @@ def game_init():
     SURFACE_MAIN = pygame.display.set_mode((constants.GAME_WIDTH, constants.GAME_HEIGHT))
 
     GAME_MAP = map_create()
+
+    PLAYER = obj_actor(0, 0, constants.S_PLAYER )
 
 
 #  _____                     _
