@@ -1,13 +1,34 @@
-{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Polls</title>
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+    <!-- load static files for my CSS file(s) -->
+    {% load static %}
 
-<h1>{{ question.question_text }}</h1>
+    <!-- my CSS file(s) -->
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
 
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+  </head>
+  <body>
+
+    <div class="container">
+
+      <h1>{{ question.question_text }}</h1>
+
+      <ul>
+      {% for choice in question.choice_set.all %}
+          <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+      {% endfor %}
+      </ul>
+
+      <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+
+    </div>
+
+  </body>
+</html>

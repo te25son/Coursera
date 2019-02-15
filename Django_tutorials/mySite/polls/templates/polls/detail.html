@@ -1,16 +1,37 @@
-{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Polls</title>
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+    <!-- load static files for my CSS file(s) -->
+    {% load static %}
 
-<h1>{{ question.question_text }}</h1>
+    <!-- my CSS file(s) -->
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<form action="{% url 'polls:vote' question.id %}" method="post">
-{% csrf_token %}
-{% for choice in question.choice_set.all %}
-    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
-{% endfor %}
-<input type="submit" value="Vote" />
-</form>
+  </head>
+  <body>
+
+    <div class="container">
+
+      <h1>{{ question.question_text }}</h1>
+
+      {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+      <form action="{% url 'polls:vote' question.id %}" method="post">
+      {% csrf_token %}
+      {% for choice in question.choice_set.all %}
+          <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+          <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+      {% endfor %}
+      <input type="submit" value="Vote" />
+      </form>
+
+    </div>
+
+  </body>
+</html>

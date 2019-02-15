@@ -3,7 +3,9 @@ li a {
 }
 
 body {
-  margin-top: 18%;
-  text-align: center;
   background: white url("images/background.jpg") no-repeat right top;
+}
+
+div {
+  margin-top: 18%;
 }
