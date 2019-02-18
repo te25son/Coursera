@@ -1,15 +1,28 @@
 <!DOCTYPE html>
+{% load staticfiles %}
+
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>First App</title>
+    <title>Hello Page</title>
   </head>
   <body>
+
+    <style media="screen">
+      img {
+        height: 25%;
+        width: 25%;
+      }
+    </style>
 
     <h1>Hello!</h1>
     <p>This is index.html</p>
 
-    {{ insert_me }}
+    <p>
+      {{ insert_me }}
+    </p>
+
+    <img src="{% static 'images/world-sandwich.jpeg' %}" alt="world sandwich">
 
   </body>
 </html>
