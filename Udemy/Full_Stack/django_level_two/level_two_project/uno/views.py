@@ -1,7 +1,10 @@
 from django.shortcuts import render
+from uno.models import AccessRecord, Topic, Webpage
 
 def index(request):
-    index_dict = {
-        'index_content': 'This is from the app "uno".'
+    webpages_list = AccessRecord.objects.order_by('date')
+    date_dict = {
+        'access_records': webpages_list,
     }
-    return render(request, 'uno/index.html', context=index_dict)
+
+    return render(request, 'uno/index.html', context=date_dict)

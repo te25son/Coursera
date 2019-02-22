@@ -3,16 +3,35 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>UNO</title>
+    <title>Uno App</title>
 
-    <!-- my static css -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
 
   </head>
   <body>
 
-    <h1>UNO APP</h1>
-    <p>{{ index_content }}</p>
+    <h1>Uno App</h1>
+    <h3>Apps access records:</h3>
+
+    <div class="uno-tab">
+      {% if access_records %}
+      <table>
+        <thead>
+          <th>Site Name</th>
+          <th>Access Date</th>
+        </thead>
+        {% for acc in access_records %}
+        <tr>
+          <td>{{ acc.name }}</td>
+          <td>{{ acc.date }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <p>No access records to display.</p>
+      {% endif %}
+    </div>
 
   </body>
 </html>
