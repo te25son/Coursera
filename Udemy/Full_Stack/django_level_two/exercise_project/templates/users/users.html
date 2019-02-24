@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Users</title>
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="{% static 'users/css/styles.css' %}">
+
+  </head>
+  <body>
+
+    <p>This is the users page where user information is displayed</p>
+
+    <div>
+      {% if site_users %}
+      <table>
+        <thead>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+        </thead>
+        {% for user in site_users %}
+        <tr>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.email }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <p>No users found.</p>
+      {% endif %}
+    </div>
+
+  </body>
+</html>
