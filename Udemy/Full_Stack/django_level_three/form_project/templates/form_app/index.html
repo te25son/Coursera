@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Index</title>
+
+    <link rel="stylesheet" href="{% static 'form_app/css/styles.css' %}">
+  </head>
+  <body>
+
+    <h1>Hi</h1>
+    <p>This is index.html</p>
+    <p><a href="{% url 'form_app:forms' %}">Go to forms.html</a></p>
+
+  </body>
+</html>
