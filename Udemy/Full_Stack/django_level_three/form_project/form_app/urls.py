@@ -5,5 +5,5 @@ app_name = 'form_app'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('forms/', views.forms, name='forms'),
+    path('forms/', views.forms_page, name='forms'),
 ]
