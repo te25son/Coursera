@@ -14,27 +14,8 @@
   </head>
   <body>
 
-    <p>This is the users page where user information is displayed</p>
-
-    <div>
-      {% if site_users %}
-      <table>
-        <thead>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-        </thead>
-        {% for user in site_users %}
-        <tr>
-          <td>{{ user.first_name }}</td>
-          <td>{{ user.last_name }}</td>
-          <td>{{ user.email }}</td>
-        </tr>
-        {% endfor %}
-      </table>
-      {% else %}
-      <p>No users found.</p>
-      {% endif %}
+    <div class="container mt-5">
+      <h1 class="display-4">Sign up!</h1>
     </div>
 
   </body>
