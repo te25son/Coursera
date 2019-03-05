@@ -16,6 +16,11 @@
 
     <div class="container mt-5">
       <h1 class="display-4">Sign up!</h1>
+      <form class="mt-3" method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" name="btn btn-info" value="Submit">
+      </form>
     </div>
 
   </body>
