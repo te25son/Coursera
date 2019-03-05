@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from users.models import User
+from users.forms import NewUserForm
 
 
 def home(request):
@@ -7,8 +8,16 @@ def home(request):
 
 
 def users(request):
-    users_list = User.objects.order_by('first_name')
-    users_dict = {
-        'site_users': users_list,
-    }
-    return render(request, 'users/users.html', context=users_dict)
+    form = NewUserForm()
+
+    if request.method == "POST":                # if the user hits submit on form
+        form = NewUserForm(request.POST)
+
+        if form.is_valid():                     # and if that form is valid...
+            form.save(commit=True)
+            return index(request)
+
+        else:
+            print("ERROR: Form invalid.")
+
+    return render(request, 'users/users.html', {'form': form})

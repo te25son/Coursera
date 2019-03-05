@@ -3,8 +3,8 @@ from django import forms
 from django.core import validators
 
 
-class UserLogin(forms.ModelForm):
+class NewUserForm(forms.ModelForm):
 
-    class Meta:
+    class Meta():
         model = models.User
         fields = '__all__'
