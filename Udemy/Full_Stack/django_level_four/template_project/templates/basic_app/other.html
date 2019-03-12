@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
+{% extends "basic_app/base.html" %}
 
-    <!-- BOOTSTRAP -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  {% block body_block %}
 
-  </head>
-  <body>
-
-    <div class="container mt-5">
-      <h1>Welcome to Other!</h1>
-      <a class="btn btn-info" href="{% url 'basic_app:relative' %}">Relative</a>
-      <a class="btn btn-info" href="{% url 'admin:index' %}">Admin</a>
-      <a class="btn btn-info "href="{% url 'index' %}">Index</a>
+    <h1 class="display-4 mt-5">Welcome to Other!</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      <div class="col-md-6">
+        <p class="lead">
+        Here are some useless buttons!<br>
+        Click them to relieve some stress.
+        </p>
+        <button type="button" class="btn btn-info btn-md btn-block" name="button">Button</button>
+        <button type="button" class="btn btn-info btn-md btn-block" name="button">Another Button</button>
+        <button type="button" class="btn btn-info btn-md btn-block" name="button">Buttons Buttons</button>
+      </div>
     </div>
 
-  </body>
-</html>
+  {% endblock %}
