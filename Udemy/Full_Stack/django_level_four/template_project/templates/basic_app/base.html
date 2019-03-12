@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-dark sm-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">BRAND</a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#">Other</a>
+          </li>
+          <li class="nav-item">
+            <a href="#">Relative</a>
+          </li>
+          <li class="nav-item">
+            <a href="#">Admin</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      {% block body_block %}
+
+      <!-- Anything outside of this will be inherited -->
+
+      {% endblock %}
+
+    </div>
+
+  </body>
+</html>
