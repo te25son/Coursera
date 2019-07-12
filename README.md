@@ -32,6 +32,4 @@ A link to my first Coursera course - Intro to Scripting in Python:
   
 <b>Web Frameworks:</b>
 - [Flask](http://flask.pocoo.org/)
-    - I chose this framework to begin learning on because of the saying "pirates use Flask, the navy uses Django" (at least I think it's a saying...), and I'd much rather be a pirate. Flask is easy to get set up and started, and perfect for those just starting out to learn a bit about developing web applications.  
 - [Django](https://www.djangoproject.com/)
-    - I haven't played around with Django much yet, but from what I understand it includes more out-of-the-box features than does Flask, though is more difficult to initially start up. 
